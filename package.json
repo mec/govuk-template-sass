@@ -1,0 +1,22 @@
+{
+  "name": "govuk-template-sass",
+  "version": "1.0.0",
+  "description": "Bundles up the sass and assets for the Gov UK tempalte https://github.com/alphagov/govuk_template",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run init:submodule && npm run update:submodule && npm run bundle",
+    "bundle": "npx gulp",
+    "init:submodule": "git submodule init",
+    "update:submodule": "git submodule update",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-css-replace-url": "^0.2.4",
+    "gulp-rewrite-css": "^1.1.1"
+  }
+}
