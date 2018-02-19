@@ -1,6 +1,7 @@
 'use strict';
 const gulp = require('gulp');
 const urlAdjuster = require('gulp-css-replace-url');
+const rename = require('gulp-rename');
 
 gulp.task('copy:images', () => {
   return gulp.src('./govuk_template/source/assets/images/*.*').pipe(gulp.dest('./src/images'));
@@ -24,4 +25,19 @@ gulp.task('copy:fonts', () => {
     .pipe(gulp.dest('./src/fonts'));
 });
 
-gulp.task('default', ['copy:images', 'copy:styleheet:images', 'copy:fonts', 'copy:sass']);
+gulp.task('copy:font:styles', () => {
+  return gulp 
+    .src('./govuk_template/source/assets/stylesheets/fonts.css')
+    .pipe(rename('fonts.scss'))
+    .pipe(gulp.dest('./src/sass'))
+});
+
+gulp.task('copy:font:styles:ie-8', () => {
+  return gulp 
+    .src('./govuk_template/source/assets/stylesheets/fonts-ie8.css.erb')
+    .pipe(rename('fonts-ie8.scss'))
+    .pipe(gulp.dest('./src/sass'))
+});
+
+gulp.task('font:styles', ['copy:font:styles', 'copy:font:styles:ie-8']);
+gulp.task('default', ['copy:images', 'copy:styleheet:images', 'copy:fonts', 'copy:sass', 'font:styles']);
