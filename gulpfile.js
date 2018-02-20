@@ -1,6 +1,5 @@
 'use strict';
 const gulp = require('gulp');
-const urlAdjuster = require('gulp-css-replace-url');
 const rename = require('gulp-rename');
 
 gulp.task('copy:images', () => {
